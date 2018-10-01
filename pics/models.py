@@ -47,3 +47,9 @@ class Picture(models.Model):
         return pics
 
 
+    @classmethod
+    def all_pics(cls):
+        pics = cls.objects.all()
+        return pics
+
+
