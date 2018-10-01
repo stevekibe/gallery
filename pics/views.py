@@ -14,19 +14,21 @@ def all_pics(request):
 def search_results(request):
     
     if 'picture' in request.GET and request.GET["picture"]:
-        search_term = request.GET.get("picture")
-        searched_pictures = Picture.search_by_title(search_term)
-        message = f"{search_term}"
+        category = request.GET.get("picture")
+        searched_pictures = Picture.search_picture(category)
+        message = f"{category}"
 
         return render(request, 'all-pics/search.html',{"message":message,"pictures": searched_pictures})
 
     else:
-        message = "You haven't searched for any term"
+        message = "You haven't searched for any category"
         return render(request, 'all-pics/search.html',{"message":message})
 
-def picture(request,picture_id):
-    try:
-        picture = Picture.objects.get(id = picture_id)
-    except DoesNotExist:
-        raise Http404()
-    return render(request,"all-pics/pic.html", {"picture":picture})
+def filter_by_location(request,location_id):
+
+    pictures = Picture.filter_by_location(id=location_id)
+    return render(request, 'all-pics/pic.html', {"pictures": pictures})
+
+def filter_by_category(request,category_id):
+    pictures = Picture.filter_by_category(id = category_id)
+    return render(request,'all-pics/category.html',{"pictures":pictures})
