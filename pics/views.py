@@ -3,6 +3,7 @@ from django.http  import HttpResponse,Http404
 import datetime as dt
 from .models import Picture
 
+
 def welcome(request):
     return render(request, 'welcome.html')
 
