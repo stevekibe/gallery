@@ -2,24 +2,47 @@
 
 {% block content %}
 {{block.super}}
+<div class="container-fluid" style="background-image:url(http://informationcommunicationtechnology.com/wp-content/uploads/2018/06/Dark-Background-1024x576.png);backround-repeat:no-repeat;">
 <div class="container">
 
-        <!-- Looping through news   -->
-    {% for pics_item in pics %}
-      
-        <div class="row">
-            <!-- displaying News articles -->
-            <div class=" col-sm-3">
-            <img src="{{pics_item.picture_image.url}}" class="img-responsive" alt="Image">
-            </div>
-      
-    
-        </div>
-      
-    {% empty %}
     <div class="row">
-        <h2 class="text-center">There are no pics come back later</h2>
+        {% for pics_item in pics %}
+ 
+        <div class="col-md-4">
+            <!-- modal button -->
+            
+                <img src="{{pics_item.picture_image.url }}" alt="" width="350" height="350"  data-toggle="modal" data-target="#{{pics_item.id}}">
+            
+            <br>
+        </div>
+        
+          
+          <!-- Modal -->
+          <div class="modal fade" id="{{pics_item.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{pics_item.picture_image.url }}" alt="" width="350" height="350">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+ 
+        {% endfor %}
     </div>
-    {% endfor %}
+ </div>
+ 
+ 
+</div>
 </div>
 {% endblock %}
