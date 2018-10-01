@@ -1,7 +1,7 @@
 from django.db import models
 import datetime as dt
 
-class Editor(models.Models):
+class Editor(models.Model):
     first_name = models.CharField(max_length = 30)
     last_name = models.CharField(max_length = 30)
     email = models.EmailField()
@@ -15,13 +15,20 @@ class Editor(models.Models):
     class Meta:
         ordering = ['first_name']
 
-class Pics(models.Model):
+class tags(models.Model):
+    name = models.CharField(max_length = 30)
+
+    def __str__(self):
+        return self.name
+
+
+class Picture(models.Model):
     title = models.CharField(max_length =60)
     post = models.TextField()
     editor = models.ForeignKey(Editor)
     tags = models.ManyToManyField(tags)
     pub_date = models.DateTimeField(auto_now_add=True)
-    pics_image = models.ImageField(upload_to = 'pics/')
+    picture_image = models.ImageField(upload_to = 'pictures/')
 
     @classmethod
     def todays_pics(cls):
@@ -39,9 +46,4 @@ class Pics(models.Model):
         pics = cls.objects.filter(title__icontains=search_term)
         return pics
 
-class tags(models.Model):
-     name = models.CharField(max_length = 30)
-
-    def __str__(self):
-        return self.name
 

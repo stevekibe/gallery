@@ -1,0 +1,27 @@
+{%extends 'all-pics/base.html'%}
+
+{% block content %}
+{{block.super}}
+<div class="container">
+
+        <!-- Looping through news   -->
+    {% for pics_item in pics %}
+      
+        <div class="row">
+            <!-- displaying News articles -->
+            <div class=" col-sm-3">
+               <a href="/picture/{{pics_item.id}}"> <h2 class="text-center"> {{ pics_item.title }} </h2></a>
+        
+                <img src="{{pics_item.picture_image.url}}" class="img-responsive" alt="Image">
+            </div>
+      
+      
+        </div>
+      
+    {% empty %}
+    <div class="row">
+        <h2 class="text-center">There are no pics come back later</h2>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
