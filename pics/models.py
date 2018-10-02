@@ -52,4 +52,7 @@ class Picture(models.Model):
         pics = cls.objects.all()
         return pics
 
+    def __str__(self):
+        return self.title
+
 
