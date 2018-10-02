@@ -35,7 +35,6 @@
                     <p>Posted {{pics_item.pub_date|timesince}} by {{pics_item.editor.first_name}}</p>
                 </div>
                 <div class="modal-footer">
-
                   <form action="">
                     <input type="text" value="https://spiceit.herokuapp.com{{pics_item.picture_image.url}}" id="" style="width:100%;height:40px;">
                     <br>
@@ -47,6 +46,17 @@
               </div>
             </div>
           </div>
+        <script>
+            function copyLink(value) {
+              console.log('copied link')
+              function handler(event){
+                event.clipboardData.setData('text/plain', value);
+                event.preventDefault();
+                document.removeEventListener('copy', handler, true);
+              }
+              document.addEventListener('copy', handler, true);
+              document.execCommand('copy');
+        </script>
  
         {% endfor %}
     </div>
