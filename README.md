@@ -6,7 +6,8 @@ For developing and testing my app on your machine you must follow the following 
 1. You must gitclone the project from github by typing git clone https://github.com/stevekibe/gallery.git on your terminal.
 2. You must create a database for the app NB: I have used postgress sql so you can use any db to use.
 3. Then you must change the settings.py so as to configure your db .
-4. If you have intrest to deploy use the following link to deploy your project https://gist.github.com/PurpleBooth/109311bb0361f32
+4. If you have intrested to deploy use the following link to deploy your project on heroku
+https://github.com/Benard18/Deployment_to_heroku_django
 
 # Prerequisites
 You need to install the follwing for the app to work
