@@ -35,6 +35,12 @@
                     <p>Posted {{pics_item.pub_date|timesince}} by {{pics_item.editor.first_name}}</p>
                 </div>
                 <div class="modal-footer">
+
+                  <form action="">
+                    <input type="text" value="https://spiceit.herokuapp.com{{pics_item.picture_image.url}}" id="" style="width:100%;height:40px;">
+                    <br>
+                    <button type="button" class="btn btn-outline-success" style="float:right;" value="https://spiceit.herokuapp.com{{pics_item.picture_image.url}}" onclick="copyLink(this.value)"  >Copy Link&nbsp;<i class="fas fa-copy"></i></button>
+                  </form>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   
                 </div>
